@@ -69,11 +69,10 @@ def buyProduct(email):
 userList = []
 
 
+print("Enter a list of emails separated by new lines (Enter 'q' to quit)\n")
 while True:
-    input_email = input("Enter a list of emails separated by new lines (Enter 'q' to quit)\n")
-    for i in input_email:
-
-    if input_email.lower() == 'q':
+    input_email = input()
+    if input_email == 'q':
         break
     userList.append(input_email)
 
