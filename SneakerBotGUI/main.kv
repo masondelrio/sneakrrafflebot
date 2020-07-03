@@ -1,0 +1,21 @@
+#:include kv/homescreen.kv
+#:include kv/settingsscreen.kv
+
+GridLayout:
+    cols: 2
+    ScreenManager:
+        id:screen_manager
+        HomeScreen:
+            name: "home_screen"
+            id: home_screen
+        SettingsScreen:
+            name: "settings_screen"
+            id: settings_screen
+
+
+
+            # while True:
+            #     input_email = input()
+            #     if input_email == 'q':
+            #         break
+            #     userList.append(input_email)
