@@ -1,0 +1,21 @@
+<SettingsScreen>:
+    email: email
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols:2
+            Label:
+                text:"Add email "
+
+            TextInput:
+                id: email
+                multiline:False
+        Button:
+            text:
+                "Submit"
+            on_release:root.btn()
+        Button:
+            text:
+                "This is the settings screen, where you can add emails"
+            on_release:
+                app.change_screen("home_screen")
