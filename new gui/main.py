@@ -1,15 +1,21 @@
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty
-
+from kivy.properties import ObjectProperty
 from kivymd.app import MDApp
+from kivy.uix.screenmanager import Screen
 from kivymd.theming import ThemableBehavior
 from kivymd.uix.list import OneLineIconListItem, MDList
+userList = []
+
 KV = ''
 class ContentNavigationDrawer(BoxLayout):
+    email = ObjectProperty(None)
+    def btn(self):
+        userList.append(self.email.text )
+        self.email.text = ""
+        print(userList)
     pass
-
-
 class ItemDrawer(OneLineIconListItem):
     icon = StringProperty()
 
