@@ -12,7 +12,8 @@ KV = ''
 class ContentNavigationDrawer(BoxLayout):
     email = ObjectProperty(None)
     def btn(self):
-        userList.append(self.email.text )
+        text = self.email.text
+        userList.append(text.split())
         self.email.text = ""
         print(userList)
     pass
