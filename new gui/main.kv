@@ -10,10 +10,10 @@
 
 
 <ContentNavigationDrawer>:
+
     orientation: "vertical"
     padding: "8dp"
     spacing: "8dp"
-
     AnchorLayout:
         anchor_x: "left"
         size_hint_y: None
@@ -24,6 +24,8 @@
             size_hint: None, None
             size: "100dp", "100dp"
             source: "image2.jpg"
+
+
 
     MDLabel:
         text: "Navigation bar"
@@ -71,15 +73,17 @@ Screen:
 
                             TextInput:
                                 id: email
-                                multiline:False
+                                multiline:True
                     Button:
                         text: "Submit"
+                        on_release: content_drawer.btn()
 
-                    Widget:
 
 
         MDNavigationDrawer:
+            drawer_logo: "image.png"
             id: nav_drawer
 
             ContentNavigationDrawer:
+                email:email
                 id: content_drawer
