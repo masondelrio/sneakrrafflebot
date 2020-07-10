@@ -1,0 +1,160 @@
+
+<ItemDrawer>:
+    theme_text_color: "Custom"
+    
+
+    IconLeftWidget:
+        id: icon
+        icon: root.icon
+        theme_text_color: "Custom"
+        text_color: root.text_color
+
+
+<ContentNavigationDrawer>:
+
+    orientation: "vertical"
+    padding: "8dp"
+    spacing: "8dp"
+    AnchorLayout:
+        anchor_x: "left"
+        size_hint_y: None
+        height: avatar.height
+
+        Image:
+            id: avatar
+            size_hint: None, None
+            size: "100dp", "100dp"
+            source: "image2.jpg"
+
+
+
+    MDLabel:
+        text: "Navigation bar"
+        font_style: "Button"
+        size_hint_y: None
+        height: self.texture_size[1]
+
+    MDLabel:
+        text: "Mainemail@gmail.com"
+        font_style: "Caption"
+        size_hint_y: None
+        height: self.texture_size[1]
+
+    ScrollView:
+
+        DrawerList:
+            id: md_list
+            OneLineAvatarListItem:
+                text: "Home"
+                on_press:
+
+                    root.screen_manager.current = "screen1"
+                ImageLeftWidget:
+                    source: "home.png"
+
+            OneLineAvatarListItem:
+                text: "Settings"
+                on_press:
+
+                    root.screen_manager.current = "screen2"
+                ImageLeftWidget:
+                    source: "sett.jpg"
+
+
+
+
+NavigationLayout:
+
+
+    ScreenManager:
+        id:screen_manager
+
+        Screen:
+            name:"screen1"
+
+            BoxLayout:
+                orientation: 'vertical'
+
+                MDToolbar:
+                    title: "SneakerBot"
+                    elevation: 10
+                    left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
+                GridLayout:
+                    cols:2
+                    Image:
+                        id: avatar
+                        source: "image2.jpg"
+                    Image:
+                        id: avatar
+                        source: "image.png"
+                    Image:
+                        id: avatar
+                        source: "1.jpg"
+                    Image:
+                        id: avatar
+                        source: "2.jpg"
+                    Image:
+                        id: avatar
+                        source: "3.jpg"
+                    Image:
+                        id: avatar
+                        source: "4.jpg"
+
+        Screen:
+            name:"screen2"
+
+            BoxLayout:
+                orientation: 'vertical'
+
+                MDToolbar:
+                    title: "Settings"
+                    elevation: 10
+                    left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
+                GridLayout:
+                    cols:1
+                    GridLayout:
+                        cols:2
+                        MDLabel:
+                            text:"Add email "
+                            font_style: "Button"
+                            size_hint_y: None
+                            height: self.texture_size[1]
+
+                        TextInput:
+                            id: email
+                            multiline:True
+                Button:
+                    text: "Submit"
+                    on_release: content_drawer.btn()
+        Screen:
+            name:"screen3"
+
+            BoxLayout:
+                orientation: 'vertical'
+
+                MDToolbar:
+                    title: "Settings"
+                    elevation: 10
+                    left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
+                GridLayout:
+                    cols:1
+
+                    Button:
+                        text: "Submit"
+                        on_release: content_drawer.btn()
+
+
+
+
+
+
+
+    MDNavigationDrawer:
+        drawer_logo: "image.png"
+        id: nav_drawer
+
+
+        ContentNavigationDrawer:
+            screen_manager:screen_manager
+            email:email
+            id: content_drawer
