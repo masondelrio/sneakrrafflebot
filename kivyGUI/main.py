@@ -28,6 +28,29 @@ KV = ''
 class ContentNavigationDrawer(BoxLayout):
     userList =[]
     email = ObjectProperty(None)
+    input_Fname =ObjectProperty(None)
+    input_Lname=ObjectProperty(None)
+    input_Street=ObjectProperty(None)
+    input_City=ObjectProperty(None)
+    input_State=ObjectProperty(None)
+    input_Zip=ObjectProperty(None)
+    def save_info(self):
+        Fname = self.input_Fname.text
+        Lname = self.input_Lname.text
+        Street = self.input_Street.text
+        City = self.input_City.text
+        State = self.input_State.text
+        Zip = self.input_Zip.text
+        self.input_Fname.text = ""
+        self.input_Lname.text = ""
+        self.input_Street.text= ""
+        self.input_City.text= ""
+        self.input_State.text= ""
+        self.input_Zip.text= ""
+        print(Fname,Lname,Street,City,State,Zip)
+
+
+
     def btn(self):
         text = self.email.text
         userList=text.split()
@@ -42,38 +65,26 @@ class ContentNavigationDrawer(BoxLayout):
         xPath_Zip = '//*[@id="mG61Hd"]/div[2]/div[1]/div[2]/div[7]/div/div/div[2]/div/div[1]/div/div[1]/input'
         xPath_Size = '//*[@id="mG61Hd"]/div[2]/div[1]/div[2]/div[8]/div/div/div[2]/div/div/span/div/div[8]/label/div/div[1]/div'
         xPath_Submit = '//*[@id="mG61Hd"]/div[2]/div[1]/div[3]/div[3]/div[1]/div'
-        print("Enter First Name: ")
-        input_Fname = input()
-        print("Enter Last Name: ")
-        input_Lname = input()
-        print("Enter Street Address: ")
-        input_Street = input()
-        print("Enter City: ")
-        input_City = input()
 
-        print("Enter State: ")
-        input_State= input()
-        print("Enter Zip Code: ")
-        input_Zip = input()
 
         for email in userList:
-            driver = webdriver.Chrome(executable_path='/Users/masondelrio/Desktop/chromedriver')
+            driver = webdriver.Chrome(executable_path='/Users/manuelpartida/Desktop/chromedriver')
             time.sleep(1)
             driver.get(str("https://docs.google.com/forms/d/e/1FAIpQLSeHfR7uI1tREQR_b2Hc-aNAb2_e377kgsqZXBcTYPfr4l_Z9w/viewform?embedded=true"))
             time.sleep(3)
             driver.find_element_by_xpath(xPath_Email).send_keys(email)
             time.sleep(3)
-            driver.find_element_by_xpath(xPath_Fname).send_keys(input_Fname)
+            driver.find_element_by_xpath(xPath_Fname).send_keys(Fname)
             time.sleep(3)
-            driver.find_element_by_xpath(xPath_Lname).send_keys(input_Lname)
+            driver.find_element_by_xpath(xPath_Lname).send_keys(Lname)
             time.sleep(3)
-            driver.find_element_by_xpath(xPath_Street).send_keys(input_Street)
+            driver.find_element_by_xpath(xPath_Street).send_keys(Street)
             time.sleep(3)
-            driver.find_element_by_xpath(xPath_City).send_keys(input_City)
+            driver.find_element_by_xpath(xPath_City).send_keys(City)
             time.sleep(3)
-            driver.find_element_by_xpath(xPath_State).send_keys(input_State)
+            driver.find_element_by_xpath(xPath_State).send_keys(State)
             time.sleep(3)
-            driver.find_element_by_xpath(xPath_Zip).send_keys(input_Zip)
+            driver.find_element_by_xpath(xPath_Zip).send_keys(Zip)
             time.sleep(3)
             driver.find_element_by_xpath(xPath_Size).click()
             time.sleep(3)
