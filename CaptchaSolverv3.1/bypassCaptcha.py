@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 import os, sys
 import time, requests
 from bs4 import BeautifulSoup
-
+TEST = "Is push working?"
 delayTime = 2
 audioToTextDelay = 10
 filename = 'test.mp3'
