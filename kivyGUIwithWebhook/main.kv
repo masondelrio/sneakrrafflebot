@@ -1,0 +1,252 @@
+<ItemDrawer>:
+    theme_text_color: "Custom"
+
+
+    IconLeftWidget:
+        id: icon
+        icon: root.icon
+        theme_text_color: "Custom"
+        text_color: root.text_color
+
+
+<ContentNavigationDrawer>:
+
+    orientation: "vertical"
+    padding: "8dp"
+    spacing: "8dp"
+
+    ScrollView:
+
+        DrawerList:
+            id: md_list
+            OneLineAvatarListItem:
+                text: "Home"
+                on_press:
+
+                    root.screen_manager.current = "screen1"
+                ImageLeftWidget:
+                    source: "home [#1391].png"
+            OneLineAvatarListItem:
+                text: "Profile"
+                on_release:
+
+                    root.screen_manager.current = "screen3"
+                ImageLeftWidget:
+                    source: "profile [#1341].png"
+            OneLineAvatarListItem:
+                text: "Emails"
+                on_release:
+
+                    root.screen_manager.current = "screen2"
+                ImageLeftWidget:
+                    source: "email [#1573].png"
+            OneLineAvatarListItem:
+                text: "Proxies"
+                on_press:
+
+
+                ImageLeftWidget:
+                    source: "wifi [#1021].png"
+            OneLineAvatarListItem:
+                text: "Raffles Won"
+                on_press:
+
+
+                ImageLeftWidget:
+                    source: "emoji_happy_simple [#460].png"
+            OneLineAvatarListItem:
+                text: "Webhook"
+                on_release:
+                    root.screen_manager.current = "screen4"
+
+
+                ImageLeftWidget:
+                    source: "notification_bell [#1398].png"
+
+
+
+
+
+
+
+NavigationLayout:
+
+
+    ScreenManager:
+        id:screen_manager
+
+        Screen:
+            name:"screen1"
+
+            BoxLayout:
+                orientation: 'vertical'
+
+                MDToolbar:
+                    title: "Live Raffles"
+                    elevation: 10
+                    left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
+
+                Button:
+                    on_press: app.play_sound()
+
+                    size_hint: 1, 1
+                    Image:
+                        source: 'PinClipart.com_saturn-clipart_5249382.png'
+
+                        x: self.parent.width * .5 - self.width * .5
+                        y: self.parent.height* .5 - self.height * .5
+                        size: 500, 500
+                        allow_stretch: True
+
+
+
+
+
+
+
+
+
+        Screen:
+            name:"screen2"
+
+            BoxLayout:
+                orientation: 'vertical'
+                GridLayout:
+                    cols:1
+
+                    MDToolbar:
+                        pos: 0,1070
+                        title: "Emails"
+                        elevation: 10
+                        left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
+
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: email
+                        size: self.size
+                        hint_text: "Copy and Paste Emails"
+                        pos: 00, 700
+
+                        multiline:True
+                    MDRaisedButton:
+
+                        text: "Submit"
+                        md_bg_color: app.theme_cls.accent_color
+                        pos_hint:{'center_x':.5}
+
+                        on_release: content_drawer.btn()
+        Screen:
+            name:"screen3"
+
+            BoxLayout:
+                orientation: 'vertical'
+
+                MDToolbar:
+                    title: "Profile"
+                    elevation: 10
+                    left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
+                GridLayout:
+                    cols:1
+
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: input_Fname
+                        size: self.size
+                        hint_text: "First Name"
+                        multiline:True
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: input_Lname
+                        size: self.size
+                        hint_text: "Last Name"
+                        multiline:True
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: input_Street
+                        size: self.size
+                        hint_text: "Street Address"
+                        multiline:True
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: input_City
+                        size: self.size
+                        hint_text: "City"
+                        multiline:True
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: input_State
+                        size: self.size
+                        hint_text: "State"
+                        multiline:True
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: input_Zip
+                        size: self.size
+                        hint_text: "Zip Code"
+                        multiline:True
+                    MDRaisedButton:
+
+                        text: "Save Info"
+                        md_bg_color: app.theme_cls.accent_color
+
+
+                        on_release: content_drawer.save_info()
+        Screen:
+            name:"screen4"
+
+            BoxLayout:
+                orientation: 'vertical'
+                GridLayout:
+                    cols:1
+
+                    MDToolbar:
+                        pos: 0,1070
+                        title: "Webhook"
+                        elevation: 10
+                        left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
+
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: webhook1
+                        size: self.size
+                        hint_text: "Copy and Paste Webhook"
+                        pos: 00, 700
+
+                        multiline:True
+                    MDRaisedButton:
+
+                        text: "Submit"
+                        md_bg_color: app.theme_cls.accent_color
+                        pos_hint:{'center_x':.5}
+
+                        on_release: content_drawer.webhook()
+                    MDRaisedButton:
+
+                        text: "Test Webhook"
+                        md_bg_color: app.theme_cls.accent_color
+                        pos_hint:{'center_x':.5}
+
+                        on_release: content_drawer.webhookTest()
+
+
+
+
+
+
+
+    MDNavigationDrawer:
+        drawer_logo: "image.png"
+        id: nav_drawer
+
+
+        ContentNavigationDrawer:
+            screen_manager:screen_manager
+            email:email
+            input_Fname: input_Fname
+            input_Lname: input_Lname
+            input_Street: input_Street
+            input_City: input_City
+            input_State: input_State
+            input_Zip: input_Zip
+            webhook1: webhook1
+            id: content_drawer
