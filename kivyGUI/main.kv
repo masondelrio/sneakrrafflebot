@@ -103,28 +103,30 @@ NavigationLayout:
 
             BoxLayout:
                 orientation: 'vertical'
-
-                MDToolbar:
-                    title: "Emails"
-                    elevation: 10
-                    left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
                 GridLayout:
                     cols:1
-                    GridLayout:
-                        cols:2
-                        MDLabel:
-                            text:"Add email "
-                            font_style: "Button"
-                            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                            size_hint_y: None
-                            height: self.texture_size[1]
 
-                        TextInput:
-                            id: email
-                            multiline:True
-                Button:
-                    text: "Submit"
-                    on_release: content_drawer.btn()
+                    MDToolbar:
+                        pos: 0,1070
+                        title: "Emails"
+                        elevation: 10
+                        left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
+
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: email
+                        size: self.size
+                        hint_text: "Copy and Paste Emails"
+                        pos: 00, 700
+
+                        multiline:True
+                    MDRaisedButton:
+
+                        text: "Submit"
+                        md_bg_color: app.theme_cls.accent_color
+                        pos_hint:{'center_x':.5}
+
+                        on_release: content_drawer.btn()
         Screen:
             name:"screen3"
 
@@ -138,9 +140,50 @@ NavigationLayout:
                 GridLayout:
                     cols:1
 
-                    Button:
-                        text: "Submit"
-                        on_release: content_drawer.btn()
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: input_Fname
+                        size: self.size
+                        hint_text: "First Name"
+                        multiline:True
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: input_Lname
+                        size: self.size
+                        hint_text: "Last Name"
+                        multiline:True
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: input_Street
+                        size: self.size
+                        hint_text: "Street Address"
+                        multiline:True
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: input_City
+                        size: self.size
+                        hint_text: "City"
+                        multiline:True
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: input_State
+                        size: self.size
+                        hint_text: "State"
+                        multiline:True
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: input_Zip
+                        size: self.size
+                        hint_text: "Zip Code"
+                        multiline:True
+                    MDRaisedButton:
+
+                        text: "Save Info"
+                        md_bg_color: app.theme_cls.accent_color
+
+
+                        on_release: content_drawer.save_info()
+
 
 
 
@@ -156,4 +199,10 @@ NavigationLayout:
         ContentNavigationDrawer:
             screen_manager:screen_manager
             email:email
+            input_Fname: input_Fname
+            input_Lname: input_Lname
+            input_Street: input_Street
+            input_City: input_City
+            input_State: input_State
+            input_Zip: input_Zip
             id: content_drawer
