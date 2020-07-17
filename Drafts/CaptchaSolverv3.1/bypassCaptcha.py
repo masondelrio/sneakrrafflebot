@@ -9,7 +9,7 @@ import os, sys
 import time, requests
 from bs4 import BeautifulSoup
 PROXY_HOST = 'us-dynamic.pureproxies.io'  # rotating proxy or host
-PROXY_PORT = 10155 # port
+PROXY_PORT = 10156 # port
 PROXY_USER = '136007+US+136007' # username
 PROXY_PASS = 'w7lhlnehf8' # password
 

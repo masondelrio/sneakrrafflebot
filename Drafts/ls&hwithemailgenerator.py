@@ -7,6 +7,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.chrome.options import Options
 import zipfile,os
+import names
+
 
 ###Potential for proxy problem, not implemented properly yet. Ignore.
 def proxy_chrome(PROXY_HOST, PROXY_PORT, PROXY_USER, PROXY_PASS):
@@ -89,29 +91,27 @@ def proxy_chrome(PROXY_HOST, PROXY_PORT, PROXY_USER, PROXY_PASS):
 
 
 
+
 #Code works for Lapstone and Hammer website as of
-def enterRaffle(email):
+def enterRaffle(emailgener):
 
 
 
             driver = webdriver.Chrome(executable_path='/Users/masondelrio/Desktop/chromedriver')
             time.sleep(1)
-            driver.get(str("https://www.lapstoneandhammer.com/collections/releases/products/dunk-low-sp-university-red"))
-            time.sleep(1)
+            driver.get(str("https://www.lapstoneandhammer.com/collections/releases/products/yeezy-boost-350-v2-zyon"))
 
-
+            time.sleep(8)
             driver.find_element_by_xpath('//input[@aria-label="Enter your email address"]').send_keys("poopman@gmail.com")
-
-
             driver.find_element_by_xpath('//button[@class="needsclick Button__FormStyledButton-p2mbjt-0 dvMZen kl-private-reset-css-Xuajs1"]').click()
 
 
-            driver.find_element_by_xpath('//input[@id="mce-EMAIL"]').send_keys(email)
+            driver.find_element_by_xpath('//input[@id="mce-EMAIL"]').send_keys(emailgener)
 
-            driver.find_element_by_xpath('//input[@id = "mce-FNAME"]').send_keys('Vanessa')
+            driver.find_element_by_xpath('//input[@id = "mce-FNAME"]').send_keys(names.get_first_name())
 
 
-            driver.find_element_by_xpath('//input[@id = "mce-LNAME"]').send_keys('Antonel')
+            driver.find_element_by_xpath('//input[@id = "mce-LNAME"]').send_keys(names.get_last_name())
             time.sleep(1)
 
 
@@ -124,20 +124,39 @@ def enterRaffle(email):
             driver.find_element_by_xpath('//input[@id = "mc-embedded-subscribe"]').click()
             time.sleep(1)
             print("All Done!")
+            time.sleep(8)
 
-
+            driver.close()
 userList = []
 
 
-print("Enter a list of emails separated by new lines (Enter 'q' to quit)\n")
-while True:
-    input_email = input()
-    if input_email == 'q':
-        break
-    userList.append(input_email)
-print("Emails successfully collected.")
+#while True:
+ #   input_email = input("Enter emails")
+#    if input_email == 'q':
+ #       break
+#    userList.append(input_email)
+#print("Emails successfully collected.")
 
-print("Entering Multiple Raffles... ")
-print(userList)
-for emails in userList:
-    enterRaffle(emails)
+#print("Entering Multiple Raffles... ")
+#print(userList)
+
+
+def email_generator():
+    numEmails = 0
+    desiredEmails = 30
+    email_list = []
+    while numEmails != desiredEmails:
+        email_list.append(names.get_first_name()+names.get_last_name() + "@masesneakers.club")
+        numEmails = numEmails + 1
+    return email_list
+
+
+generatedemails = email_generator()
+
+print(generatedemails)
+
+for emailgen in generatedemails:
+    enterRaffle(emailgen)
+
+
+
