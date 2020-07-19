@@ -43,6 +43,7 @@
             OneLineAvatarListItem:
                 text: "Proxies"
                 on_press:
+                    root.screen_manager.current = "screen4"
 
 
                 ImageLeftWidget:
@@ -183,6 +184,49 @@ NavigationLayout:
 
 
                         on_release: content_drawer.save_info()
+        Screen:
+            name:"screen4"
+
+            BoxLayout:
+                orientation: 'vertical'
+                MDToolbar:
+                    title: "Enter Proxies"
+                    elevation: 10
+                    left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
+                GridLayout:
+                    cols:1
+
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: pHost
+                        size: self.size
+                        hint_text: "Proxy Host"
+                        multiline:True
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: pPort
+                        size: self.size
+                        hint_text: "Proxy Port"
+                        multiline:True
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: pUser
+                        size: self.size
+                        hint_text: "Proxy User"
+                        multiline:True
+                    MDTextField:
+                        line_color_normal: app.theme_cls.accent_color
+                        id: pPass
+                        size: self.size
+                        hint_text: "Proxy Pass"
+                        multiline:True
+                    MDRaisedButton:
+
+                        text: "Test Proxy"
+                        md_bg_color: app.theme_cls.accent_color
+
+
+                        on_release: content_drawer.testproxy()
 
 
 
@@ -197,12 +241,16 @@ NavigationLayout:
 
 
         ContentNavigationDrawer:
+            id: content_drawer
             screen_manager:screen_manager
             email:email
             input_Fname: input_Fname
             input_Lname: input_Lname
             input_Street: input_Street
+            pHost: pHost
+            pPort: pPort
+            pUser: pUser
+            pPass: pPass
             input_City: input_City
             input_State: input_State
             input_Zip: input_Zip
-            id: content_drawer
