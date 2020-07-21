@@ -3,7 +3,7 @@ import time
 from selenium import webdriver
 import os
 PROXY_HOST = 'us-dynamic.pureproxies.io'  # rotating proxy or host
-PROXY_PORT = 10155 # port
+PROXY_PORT = 10156 # port
 PROXY_USER = '136007+US+136007' # username
 PROXY_PASS = 'w7lhlnehf8' # password
 
@@ -80,8 +80,11 @@ def get_chromedriver(use_proxy=False, user_agent=None):
 def main():
     driver = get_chromedriver(use_proxy=True)
     driver.get('https://www.google.com/search?q=my+ip+address')
-    time.sleep(30)
+
+    time.sleep(10)
 
 
 if __name__ == '__main__':
     main()
+
+

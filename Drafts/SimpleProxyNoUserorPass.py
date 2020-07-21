@@ -17,5 +17,5 @@ def changeHostChrome(proxy):
     print(chrome.get_log('driver'))
 
 
-Proxy ="us-dynamic-1.resdleafproxies.com:10735"
+Proxy ="us-dynamic-1.resdleafproxies.com:16936"
 changeHostChrome(Proxy)

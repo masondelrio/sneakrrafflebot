@@ -8,7 +8,8 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.chrome.options import Options
 import zipfile,os
 import names
-
+chrome_options = Options()
+chrome_options.add_argument("--headless")
 
 ###Potential for proxy problem, not implemented properly yet. Ignore.
 def proxy_chrome(PROXY_HOST, PROXY_PORT, PROXY_USER, PROXY_PASS):
@@ -105,21 +106,21 @@ def enterRaffle(emailgener):
             driver.find_element_by_xpath('//input[@aria-label="Enter your email address"]').send_keys("poopman@gmail.com")
             driver.find_element_by_xpath('//button[@class="needsclick Button__FormStyledButton-p2mbjt-0 dvMZen kl-private-reset-css-Xuajs1"]').click()
 
-
+            time.sleep(5)
             driver.find_element_by_xpath('//input[@id="mce-EMAIL"]').send_keys(emailgener)
-
+            time.sleep(5)
             driver.find_element_by_xpath('//input[@id = "mce-FNAME"]').send_keys(names.get_first_name())
 
-
+            time.sleep(5)
             driver.find_element_by_xpath('//input[@id = "mce-LNAME"]').send_keys(names.get_last_name())
-            time.sleep(1)
+            time.sleep(5)
 
 
             driver.find_element_by_xpath('//select[@id="mce-MMERGE3"]').click()
-
+            time.sleep(5)
             driver.find_element_by_xpath('//option[@value="9"]').click()
 
-
+            time.sleep(5)
 
             driver.find_element_by_xpath('//input[@id = "mc-embedded-subscribe"]').click()
             time.sleep(1)
@@ -155,8 +156,7 @@ generatedemails = email_generator()
 
 print(generatedemails)
 
-for emailgen in generatedemails:
-    enterRaffle(emailgen)
+
 
 
 
