@@ -198,35 +198,20 @@ NavigationLayout:
 
                     MDTextField:
                         line_color_normal: app.theme_cls.accent_color
-                        id: pHost
+                        id: proxy1
                         size: self.size
-                        hint_text: "Proxy Host"
+                        hint_text: "Enter Rotating Proxy"
                         multiline:True
-                    MDTextField:
-                        line_color_normal: app.theme_cls.accent_color
-                        id: pPort
-                        size: self.size
-                        hint_text: "Proxy Port"
-                        multiline:True
-                    MDTextField:
-                        line_color_normal: app.theme_cls.accent_color
-                        id: pUser
-                        size: self.size
-                        hint_text: "Proxy User"
-                        multiline:True
-                    MDTextField:
-                        line_color_normal: app.theme_cls.accent_color
-                        id: pPass
-                        size: self.size
-                        hint_text: "Proxy Pass"
-                        multiline:True
+
                     MDRaisedButton:
 
                         text: "Test Proxy"
                         md_bg_color: app.theme_cls.accent_color
 
 
+
                         on_release: content_drawer.testproxy()
+
 
 
 
@@ -247,10 +232,8 @@ NavigationLayout:
             input_Fname: input_Fname
             input_Lname: input_Lname
             input_Street: input_Street
-            pHost: pHost
-            pPort: pPort
-            pUser: pUser
-            pPass: pPass
+            proxy1: proxy1
+
             input_City: input_City
             input_State: input_State
             input_Zip: input_Zip
